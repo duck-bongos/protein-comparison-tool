@@ -1,0 +1,11 @@
+/Users/dan/all_developing/web/dan-codes-badly/target/wasm32-unknown-unknown/wasm-dev/deps/gloo_file-7eda210630727f6d.d: /Users/dan/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/gloo-file-0.3.0/src/lib.rs /Users/dan/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/gloo-file-0.3.0/src/blob.rs /Users/dan/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/gloo-file-0.3.0/src/file_list.rs /Users/dan/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/gloo-file-0.3.0/src/file_reader.rs /Users/dan/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/gloo-file-0.3.0/src/object_url.rs
+
+/Users/dan/all_developing/web/dan-codes-badly/target/wasm32-unknown-unknown/wasm-dev/deps/libgloo_file-7eda210630727f6d.rlib: /Users/dan/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/gloo-file-0.3.0/src/lib.rs /Users/dan/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/gloo-file-0.3.0/src/blob.rs /Users/dan/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/gloo-file-0.3.0/src/file_list.rs /Users/dan/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/gloo-file-0.3.0/src/file_reader.rs /Users/dan/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/gloo-file-0.3.0/src/object_url.rs
+
+/Users/dan/all_developing/web/dan-codes-badly/target/wasm32-unknown-unknown/wasm-dev/deps/libgloo_file-7eda210630727f6d.rmeta: /Users/dan/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/gloo-file-0.3.0/src/lib.rs /Users/dan/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/gloo-file-0.3.0/src/blob.rs /Users/dan/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/gloo-file-0.3.0/src/file_list.rs /Users/dan/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/gloo-file-0.3.0/src/file_reader.rs /Users/dan/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/gloo-file-0.3.0/src/object_url.rs
+
+/Users/dan/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/gloo-file-0.3.0/src/lib.rs:
+/Users/dan/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/gloo-file-0.3.0/src/blob.rs:
+/Users/dan/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/gloo-file-0.3.0/src/file_list.rs:
+/Users/dan/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/gloo-file-0.3.0/src/file_reader.rs:
+/Users/dan/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/gloo-file-0.3.0/src/object_url.rs:

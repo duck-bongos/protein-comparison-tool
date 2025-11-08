@@ -1,0 +1,11 @@
+/Users/dan/all_developing/web/dan-codes-badly/target/wasm-dev/deps/convert_case-1e4c5c5d9d45e58f.d: /Users/dan/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/convert_case-0.6.0/src/lib.rs /Users/dan/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/convert_case-0.6.0/src/case.rs /Users/dan/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/convert_case-0.6.0/src/converter.rs /Users/dan/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/convert_case-0.6.0/src/pattern.rs /Users/dan/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/convert_case-0.6.0/src/segmentation.rs
+
+/Users/dan/all_developing/web/dan-codes-badly/target/wasm-dev/deps/libconvert_case-1e4c5c5d9d45e58f.rlib: /Users/dan/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/convert_case-0.6.0/src/lib.rs /Users/dan/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/convert_case-0.6.0/src/case.rs /Users/dan/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/convert_case-0.6.0/src/converter.rs /Users/dan/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/convert_case-0.6.0/src/pattern.rs /Users/dan/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/convert_case-0.6.0/src/segmentation.rs
+
+/Users/dan/all_developing/web/dan-codes-badly/target/wasm-dev/deps/libconvert_case-1e4c5c5d9d45e58f.rmeta: /Users/dan/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/convert_case-0.6.0/src/lib.rs /Users/dan/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/convert_case-0.6.0/src/case.rs /Users/dan/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/convert_case-0.6.0/src/converter.rs /Users/dan/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/convert_case-0.6.0/src/pattern.rs /Users/dan/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/convert_case-0.6.0/src/segmentation.rs
+
+/Users/dan/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/convert_case-0.6.0/src/lib.rs:
+/Users/dan/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/convert_case-0.6.0/src/case.rs:
+/Users/dan/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/convert_case-0.6.0/src/converter.rs:
+/Users/dan/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/convert_case-0.6.0/src/pattern.rs:
+/Users/dan/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/convert_case-0.6.0/src/segmentation.rs:

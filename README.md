@@ -1,25 +1,2 @@
-# Development
-
-Your new bare-bones project includes minimal organization with a single `main.rs` file and a few assets.
-
-```
-project/
-├─ assets/ # Any assets that are used by the app should be placed here
-├─ src/
-│  ├─ main.rs # main.rs is the entry point to your application and currently contains all components for the app
-├─ Cargo.toml # The Cargo.toml file defines the dependencies and feature flags for your project
-```
-
-### Serving Your App
-
-Run the following command in the root of your project to start developing with the default platform:
-
-```bash
-dx serve
-```
-
-To run for a different platform, use the `--platform platform` flag. E.g.
-```bash
-dx serve --platform desktop
-```
-
+# Protein Comparison Tool
+I've recently started to take my nutrition a lot more seriously, which includes protein intake. I get overwhelmed looking at the protein bar aisle in my grocery store, comparing each one based on leanness and price, then comparing those to non-protein bar options like vegan or animal sources of protein. It's a lot of math and numbers to remember - so I stopped and I outsourced it to an online version of myself.

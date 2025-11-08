@@ -1,0 +1,10 @@
+/Users/dan/all_developing/web/dan-codes-badly/target/wasm-dev/deps/proc_macro2_diagnostics-60e0f50a3e059849.d: /Users/dan/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/proc-macro2-diagnostics-0.10.1/src/lib.rs /Users/dan/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/proc-macro2-diagnostics-0.10.1/src/ext.rs /Users/dan/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/proc-macro2-diagnostics-0.10.1/src/diagnostic.rs /Users/dan/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/proc-macro2-diagnostics-0.10.1/src/line.rs
+
+/Users/dan/all_developing/web/dan-codes-badly/target/wasm-dev/deps/libproc_macro2_diagnostics-60e0f50a3e059849.rlib: /Users/dan/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/proc-macro2-diagnostics-0.10.1/src/lib.rs /Users/dan/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/proc-macro2-diagnostics-0.10.1/src/ext.rs /Users/dan/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/proc-macro2-diagnostics-0.10.1/src/diagnostic.rs /Users/dan/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/proc-macro2-diagnostics-0.10.1/src/line.rs
+
+/Users/dan/all_developing/web/dan-codes-badly/target/wasm-dev/deps/libproc_macro2_diagnostics-60e0f50a3e059849.rmeta: /Users/dan/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/proc-macro2-diagnostics-0.10.1/src/lib.rs /Users/dan/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/proc-macro2-diagnostics-0.10.1/src/ext.rs /Users/dan/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/proc-macro2-diagnostics-0.10.1/src/diagnostic.rs /Users/dan/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/proc-macro2-diagnostics-0.10.1/src/line.rs
+
+/Users/dan/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/proc-macro2-diagnostics-0.10.1/src/lib.rs:
+/Users/dan/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/proc-macro2-diagnostics-0.10.1/src/ext.rs:
+/Users/dan/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/proc-macro2-diagnostics-0.10.1/src/diagnostic.rs:
+/Users/dan/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/proc-macro2-diagnostics-0.10.1/src/line.rs:

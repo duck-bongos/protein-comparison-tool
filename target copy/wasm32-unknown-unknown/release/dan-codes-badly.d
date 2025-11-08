@@ -1,0 +1,1 @@
+/Users/dan/all_developing/web/dan-codes-badly/target/wasm32-unknown-unknown/release/dan-codes-badly.wasm: /Users/dan/all_developing/web/dan-codes-badly/src/eng.rs /Users/dan/all_developing/web/dan-codes-badly/src/lib.rs /Users/dan/all_developing/web/dan-codes-badly/src/main.rs /Users/dan/all_developing/web/dan-codes-badly/src/protein_calculator.rs
