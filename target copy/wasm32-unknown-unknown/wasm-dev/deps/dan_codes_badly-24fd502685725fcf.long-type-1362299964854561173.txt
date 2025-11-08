@@ -1,1 +1,0 @@
-dioxus::dioxus_router::components::LinkPropsBuilder<((std::option::Option<std::string::String>,), (), (), (), (), (), (), (), (NavigationTarget,))>
