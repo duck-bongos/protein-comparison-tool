@@ -1,3 +1,4 @@
+use crate::dioxus_core::use_drop;
 use dioxus::prelude::*;
 use protein_comparison_tool::protein_calculator::ProteinCalculator;
 use serde::{Deserialize, Serialize};
@@ -10,7 +11,7 @@ enum Route {
 }
 
 static CSS: Asset = asset!("/assets/main.css");
-static FAVICON: Asset = asset!("/assets/favicon_io/favicon.ico");
+static FAVICON: Asset = asset!("/assets/favicon.ico");
 static RUST: Asset = asset!(
     "/assets/rust-logo-png-transparent.png",
     ImageAssetOptions::new()
