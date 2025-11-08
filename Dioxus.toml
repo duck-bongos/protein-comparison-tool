@@ -1,9 +1,9 @@
 [application]
 name = "protein-comparison"
-out_dir = "dist"
-asset_dir = "public"
 
 [web.app]
+out_dir = "dist"
+asset_dir = "public"
 # HTML title tag content
 title = "protein-comparison"
 base_path = "protein-comparison"
