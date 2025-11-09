@@ -278,6 +278,15 @@ fn ProteinCalc() -> Element {
 //     });
 // }
 
+#[component]
+fn App() -> Element {
+    rsx! {
+        div { class: "main-container",
+            "What the heck"
+    }
+    }
+}
+
 fn main() {
     // #[cfg(feature = "web")]
     // dioxus_web::launch::launch(
@@ -287,16 +296,5 @@ fn main() {
     //     vec![],
     //     dioxus_web::Config::new().hydrate(false),
     // );
-
-    #[cfg(not(feature = "web"))]
-    dioxus::launch(|| {
-        rsx! {
-            document::Stylesheet { href: CSS }
-            div { class: "main-container",
-                h1 { "What the heck" }
-
-             }
-            Router::<Route> {}
-        }
-    });
+    dioxus::launch(App);
 }
