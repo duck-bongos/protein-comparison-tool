@@ -27,7 +27,7 @@ jobs:
         run: cargo install dioxus-cli
 
       - name: Build Dioxus Project
-        run: dx build --platform web --release
+        run: dx build --platform web --release --features web
 
       - name: Prepare Distribution
         run: |
@@ -46,6 +46,10 @@ jobs:
           # Create dist directory and copy files
           mkdir -p ./dist
           cp -r $BUILD_OUTPUT/* ./dist/
+
+          # Fix the /./  paths bug in Dioxus 0.7.1
+          sed -i 's|href="/\./|href="/|g' ./dist/index.html
+          sed -i 's|src="/\./|src="/|g' ./dist/index.html
           
           # Create 404.html for SPA support
           cp ./dist/index.html ./dist/404.html

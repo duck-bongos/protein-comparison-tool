@@ -270,10 +270,26 @@ fn ProteinCalc() -> Element {
     }
 }
 
+// fn main() {
+//     launch(|| {
+//         rsx! {
+//             Router::<Route> {}
+//         }
+//     });
+// }
+
 fn main() {
-    launch(|| {
-        rsx! {
-            Router::<Route> {}
-        }
+    // #[cfg(feature = "web")]
+    // dioxus_web::launch::launch(
+    //     || {
+    //         rsx! { Router::<Route> {}}
+    //     },
+    //     vec![],
+    //     dioxus_web::Config::new().hydrate(false),
+    // );
+
+    #[cfg(not(feature = "web"))]
+    dioxus::launch(|| {
+        rsx! { Router::<Route> {}}
     });
 }

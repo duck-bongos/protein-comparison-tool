@@ -1,26 +1,10 @@
 [application]
 
 [web.app]
-pre_compress = false
-out_dir = "dist"
-
 # HTML title tag content
-title = "Protein Comparison"
-
-# include `assets` in web platform
-[web.resource]
-
-# Additional CSS style files
-style = []
-
-# Additional JavaScript files
-script = []
-
-[web.resource.dev]
-
-# Javascript code file
-# serve: [dev-server] only
-script = []
+title = "Protein Comparison Tool"
+out_dir = "dist"
+base_dir = ""
 
 [web.watcher]
 index_on_404 = true
