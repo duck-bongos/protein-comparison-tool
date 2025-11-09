@@ -4,7 +4,8 @@
 # HTML title tag content
 title = "Protein Comparison Tool"
 out_dir = "dist"
-base_dir = ""
+base_path = "/protein-comparison-tool"
+
 
 [web.watcher]
 index_on_404 = true
