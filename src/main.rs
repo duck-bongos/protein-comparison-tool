@@ -63,11 +63,7 @@ pub fn TopNav() -> Element {
         div { class: "navbar",
             ul { class: "navbar",
                 li {
-                    Link { class: "nav-item", to: "https://dan-codes-badly.com", page: "_blank", "[ dan-codes-badly.com ]" }
-                }
-                li {
-
-                    Link { class: "nav-item", to: Route::ProteinCalc, "[ Protein Comparison Tool ]" }
+                    Link { class: "nav-item", to: "https://dan-codes-badly.com", "[ dan-codes-badly.com ]" }
                 }
             }
         }
