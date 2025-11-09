@@ -26,6 +26,12 @@
   }
 }
 
+@media (min-width: 1296px) {
+    div.main-container {
+        max-width: 75%;
+    }
+}
+
 html body {
   font-family: monospace;
   text-align: center;
@@ -270,8 +276,9 @@ h3 {
 }
 
 p.input-status {
-    text-align: center;
+  text-align: center;
   font-size: large;
+  text-indent: 0%;
 }
 
 input[type="text"] {
