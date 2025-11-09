@@ -281,9 +281,9 @@ fn ProteinCalc() -> Element {
 #[component]
 fn App() -> Element {
     rsx! {
-        div { class: "main-container",
-            "What the heck"
-    }
+
+        Router::<Route> {}
+
     }
 }
 
