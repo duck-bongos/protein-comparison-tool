@@ -25,4 +25,4 @@ script = []
 index_on_404 = true
 
 [bundle]
-targets = web
+targets = "web"
