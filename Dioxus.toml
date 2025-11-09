@@ -2,10 +2,11 @@
 
 [web.app]
 pre_compress = false
-base_path = "protein-comparison-tool"
+out_dir = "dist"
+base_path = "/protein-comparison-tool"
 
 # HTML title tag content
-title = "protein-comparison"
+title = "Protein Comparison"
 
 # include `assets` in web platform
 [web.resource]
