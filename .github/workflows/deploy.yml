@@ -27,7 +27,7 @@ jobs:
         run: cargo install dioxus-cli
 
       - name: Build Dioxus Project
-        run: dx build --release
+        run: dx build --platform web --release
 
       - name: Prepare Distribution
         run: |
