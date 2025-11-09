@@ -41,19 +41,20 @@ jobs:
             exit 1
           fi
 
+          echo "Found build output at: $BUILD_OUTPUT"
+
           # Find the hashed name of the icon:
-          favicon=`ls $BUILD_OUTPUT/public/assets/favicon-*.ico | head -n 1 | xargs -- basename`
+          favicon=`ls ./target/dx/protein-comparison-tool/release/web/public/assets/favicon-*.ico | head -n 1 | xargs -- basename`
           # Create a redirection to send `/favicon.ico` to the web path of the hashed icon:
-          cat > $BUILD_OUTPUT/public/_redirects <<EOF
+          cat > ./target/dx/protein-comparison-tool/release/web/public/_redirects <<EOF
           /favicon.ico /assets/${favicon}
           EOF
 
-          cat > $BUILD_OUTPUT/public/_headers <<EOF
+          cat > ./target/dx/protein-comparison-tool/release/web/public/_headers <<EOF
           /assets/*
               Cache-Control: public, max-age=15552000, immutable
           EOF
           
-          echo "Found build output at: $BUILD_OUTPUT"
           
           # Create dist directory and copy files
           mkdir -p ./dist
