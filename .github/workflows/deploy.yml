@@ -40,6 +40,18 @@ jobs:
             find ./target/dx -type d
             exit 1
           fi
+
+          # Find the hashed name of the icon:
+          favicon=`ls $BUILD_OUTPUT/public/assets/favicon-*.ico | head -n 1 | xargs -- basename`
+          # Create a redirection to send `/favicon.ico` to the web path of the hashed icon:
+          cat > $BUILD_OUTPUT/public/_redirects <<EOF
+          /favicon.ico /assets/${favicon}
+          EOF
+
+          cat > $BUILD_OUTPUT/public/_headers <<EOF
+          /assets/*
+              Cache-Control: public, max-age=15552000, immutable
+          EOF
           
           echo "Found build output at: $BUILD_OUTPUT"
           
@@ -56,6 +68,8 @@ jobs:
           
           echo "Distribution prepared:"
           ls -la ./dist
+
+
 
       - name: Deploy to gh-pages branch
         uses: JamesIves/github-pages-deploy-action@v4
