@@ -3,7 +3,6 @@
 [web.app]
 pre_compress = false
 out_dir = "dist"
-base_path = "/protein-comparison-tool"
 
 # HTML title tag content
 title = "Protein Comparison"
