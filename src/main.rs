@@ -290,6 +290,13 @@ fn main() {
 
     #[cfg(not(feature = "web"))]
     dioxus::launch(|| {
-        rsx! { Router::<Route> {}}
+        rsx! {
+            document::Stylesheet { href: CSS }
+            div { class: "main-container",
+                h1 { "What the heck" }
+
+             }
+            Router::<Route> {}
+        }
     });
 }
