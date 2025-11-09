@@ -2,6 +2,7 @@
 
 [web.app]
 pre_compress = false
+base_path = "protein-comparison-tool"
 
 # HTML title tag content
 title = "protein-comparison"
