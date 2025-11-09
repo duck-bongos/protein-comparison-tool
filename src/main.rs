@@ -223,9 +223,8 @@ fn ProteinCalc() -> Element {
     let mut open_describe: Signal<bool> = use_signal(|| false);
     use_context_provider(|| TitleState("Compare Protein Sources".to_string()));
     rsx! {
-        document::Link { rel: "icon", href: FAVICON }
         document::Stylesheet { href: CSS }
-        document::Link { rel: "icon", href: FAVICON }
+        document::Link { rel: "icon", href: "https://dan-codes-badly.com/assets/favicon_cyan/favicon.ico" }
 
         TopNav {}
         Title {}
