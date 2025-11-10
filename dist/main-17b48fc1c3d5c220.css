@@ -271,7 +271,11 @@ label {
   }
 }
 
-h3 {
+div.div-form , div.input-form-buttons {
+  padding: 1em;
+}
+
+h3{
   justify-content: center;
 }
 

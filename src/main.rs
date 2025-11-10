@@ -1,6 +1,15 @@
 use leptos::mount::mount_to_body;
 use leptos::prelude::*;
 
+// let mut grocery_items: Signal<Vec<GroceryItem>> = use_signal(|| vec![]);
+// let mut sort_label: Signal<String> = use_signal(|| String::from(""));
+// let mut numerator: Signal<String> = use_signal(|| String::from(""));
+// let mut denominator: Signal<String> = use_signal(|| String::from(""));
+// let mut sort_label_descriptor: Signal<String> = use_signal(|| String::from(""));
+// let mut leanness: Signal<bool> = use_signal(|| false);
+// let mut protein_per_dollar: Signal<bool> = use_signal(|| false);
+// let mut zero_warning: Signal<bool> = use_signal(|| false);
+
 #[component]
 fn App() -> impl IntoView {
     let (name, set_name) = signal("".to_string());
