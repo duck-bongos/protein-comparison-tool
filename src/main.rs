@@ -153,8 +153,8 @@ fn App() -> impl IntoView {
                     <div class="input-form-buttons">
                         <h3 style="font-style: italic">"Sort By"</h3>
                         <input type="button" class="form-button" on:click=move |_| {set_grocery_items.write().sort_by(|a, b| a.leanness.cmp(&b.leanness));} value="Lean-ness"/>
-                        <input type="button" class="form-button" value="Protein Per Dollar"/>
-                        <input type="button" class="form-button clear-button" value="Clear Items"/>
+                        <input type="button" class="form-button" on:click=move |_| {set_grocery_items.write().sort_by(|a, b| a.ppd.cmp(&b.ppd));}value="Protein Per Dollar"/>
+                        <input type="button" class="form-button clear-button" on:click=move |_| {set_grocery_items.write().clear()} value="Clear Items"/>
                     </div>
                 </div>
             </div>
