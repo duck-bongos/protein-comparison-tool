@@ -1,21 +1,15 @@
-name: Deploy Dioxus to GitHub Pages
+name: Deploy Dioxus to Cloudflare Pages
 
 on:
   push:
-    branches: ["master"]  # Change to your default branch if different
+    branches: ["main"]  # Triggers on main branch
   workflow_dispatch:
 
 permissions:
-  contents: read
-  pages: write
-  id-token: write
-
-concurrency:
-  group: "pages"
-  cancel-in-progress: false
+  contents: write  # Need write permission to push to gh-pages
 
 jobs:
-  build:
+  build-and-deploy:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -33,7 +27,7 @@ jobs:
         run: cargo install dioxus-cli
 
       - name: Build Dioxus Project
-        run: dx build --release --platform web
+        run: dx build --platform web --release --features web
 
       - name: Prepare Distribution
         run: |
@@ -46,34 +40,41 @@ jobs:
             find ./target/dx -type d
             exit 1
           fi
-          
+
           echo "Found build output at: $BUILD_OUTPUT"
+
+          # Find the hashed name of the icon:
+          favicon=`ls ./target/dx/protein-comparison-tool/release/web/public/assets/favicon-*.ico | head -n 1 | xargs -- basename`
+          # Create a redirection to send `/favicon.ico` to the web path of the hashed icon:
+          cat > ./target/dx/protein-comparison-tool/release/web/public/_redirects <<EOF
+          /favicon.ico /assets/${favicon}
+          EOF
+
+          cat > ./target/dx/protein-comparison-tool/release/web/public/_headers <<EOF
+          /assets/*
+              Cache-Control: public, max-age=15552000, immutable
+          EOF
+          
           
           # Create dist directory and copy files
           mkdir -p ./dist
           cp -r $BUILD_OUTPUT/* ./dist/
+
+          # Fix the /./  paths bug in Dioxus 0.7.1
+          sed -i 's|href="/\./|href="/|g' ./dist/index.html
+          sed -i 's|src="/\./|src="/|g' ./dist/index.html
           
-          # Create 404.html for GitHub Pages SPA support
+          # Create 404.html for SPA support
           cp ./dist/index.html ./dist/404.html
           
           echo "Distribution prepared:"
           ls -la ./dist
 
-      - name: Setup Pages
-        uses: actions/configure-pages@v4
 
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
+
+      - name: Deploy to gh-pages branch
+        uses: JamesIves/github-pages-deploy-action@v4
         with:
-          path: './dist'
-
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
-    needs: build
-    steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+          branch: gh-pages
+          folder: dist
+          clean: true

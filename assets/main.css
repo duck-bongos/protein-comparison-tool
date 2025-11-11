@@ -105,6 +105,10 @@ ul {
   list-style-position: outside;
 }
 
+ul:empty {
+  display: none;
+}
+
 ul.display-grocery-items {
   background-color: var(--primary-dark);
   padding: 1em;
@@ -284,9 +288,9 @@ label {
   }
 }
 
-/* div.div-form , div.input-form-buttons {
-  padding: 1em;
-} */
+div.input-form-buttons {
+  padding: .25em;
+}
 
 h3{
   justify-content: center;
