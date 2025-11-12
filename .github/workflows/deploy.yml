@@ -71,13 +71,12 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v4
         with:
-          # Upload dist dir
           path: './dist'
 
-      - name: Deploy to GitHub Pages 🚀
-        id: deployment
-        uses: actions/deploy-pages@v4
-        with:
-          branch: gh-pages
-          folder: dist
-          clean: true
+      # - name: Deploy to GitHub Pages 🚀
+      #   id: deployment
+      #   uses: actions/deploy-pages@v4
+      #   with:
+      #     branch: gh-pages
+      #     folder: dist
+      #     clean: true
