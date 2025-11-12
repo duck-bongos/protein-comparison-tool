@@ -213,20 +213,20 @@ function makeMutClosure(arg0, arg1, dtor, f) {
     CLOSURE_DTORS.register(real, state, state);
     return real;
 }
-function wasm_bindgen__convert__closures_____invoke__h30838668c05f4bcc(arg0, arg1) {
-    wasm.wasm_bindgen__convert__closures_____invoke__h30838668c05f4bcc(arg0, arg1);
-}
-
-function wasm_bindgen__convert__closures_____invoke__hfc8828e1c4b7e827(arg0, arg1, arg2) {
-    wasm.wasm_bindgen__convert__closures_____invoke__hfc8828e1c4b7e827(arg0, arg1, arg2);
-}
-
 function wasm_bindgen__convert__closures_____invoke__h81ea0ba280092112(arg0, arg1, arg2) {
     wasm.wasm_bindgen__convert__closures_____invoke__h81ea0ba280092112(arg0, arg1, arg2);
 }
 
 function wasm_bindgen__convert__closures_____invoke__h3b9279795d933fe6(arg0, arg1) {
     wasm.wasm_bindgen__convert__closures_____invoke__h3b9279795d933fe6(arg0, arg1);
+}
+
+function wasm_bindgen__convert__closures_____invoke__hfc8828e1c4b7e827(arg0, arg1, arg2) {
+    wasm.wasm_bindgen__convert__closures_____invoke__hfc8828e1c4b7e827(arg0, arg1, arg2);
+}
+
+function wasm_bindgen__convert__closures_____invoke__h30838668c05f4bcc(arg0, arg1) {
+    wasm.wasm_bindgen__convert__closures_____invoke__h30838668c05f4bcc(arg0, arg1);
 }
 
 function wasm_bindgen__convert__closures_____invoke__h83b9fbc1f7cbe5d7(arg0, arg1) {

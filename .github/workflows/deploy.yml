@@ -18,15 +18,11 @@ concurrency:
 
 jobs:
   Github-Pages-Release:
-
     timeout-minutes: 10
-
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
-
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v4 # repo checkout
 
@@ -51,7 +47,7 @@ jobs:
         # this is necessary for github pages where the site is deployed to username.github.io/repo_name and all files must be requested
         # relatively as favicon.ico. if we skip public-url option, the href paths will instead request username.github.io/favicon.ico which
         # will obviously return error 404 not found.
-        run: ./trunk build --release --public-url "/${GITHUB_REPOSITORY#*/}"
+        run: ./trunk build --release --public-url "/protein-comparison-tool}"
 
       # Copy index.html to 404.html for SPA routing
       # Will allow routing to work if client enters from any route
