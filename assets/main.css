@@ -26,6 +26,7 @@
   }
 }
 
+
 html body {
   font-family: monospace;
   text-align: center;
@@ -39,7 +40,6 @@ h1#heading {
 
 p {
   text-align: left;
-
   text-indent: 50px;
 }
 
@@ -80,6 +80,11 @@ button {
   margin: 2px;
 }
 
+input#sort-leanness:focus, input#sort-protein-per-dollar:focus {
+  background-color: var(--accent);
+  color: var(--text-base);
+}
+
 #name #protein #calories #cost #servings {
   font-size: 24px;
 }
@@ -103,6 +108,29 @@ ul {
   padding-right: 1em;
   text-align: left;
   list-style-position: outside;
+}
+
+ul:empty {
+  display: none;
+}
+
+ul.display-grocery-items {
+  background-color: var(--primary-dark);
+  padding: 1em;
+  margin-top: 3em;
+  max-width: 100%;
+  min-width: 60%;
+  margin: 1em;
+  border-radius: 5px;
+  border-color: var(--accent);
+  border-width: 2px;
+
+}
+
+ul.display-grocery-items li {
+  text-align: left;
+  background-color: var(--primary-dark);
+  color: var(--text)
 }
 
 div.output-list {
@@ -265,13 +293,18 @@ label {
   }
 }
 
-h3 {
+div.input-form-buttons {
+  padding: .25em;
+}
+
+h3{
   justify-content: center;
 }
 
 p.input-status {
-    text-align: center;
+  text-align: center;
   font-size: large;
+  text-indent: 0%;
 }
 
 input[type="text"] {

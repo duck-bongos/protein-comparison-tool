@@ -1,80 +1,84 @@
-name: Deploy Dioxus to Cloudflare Pages
+name: Release to Github Pages
 
 on:
   push:
-    branches: ["main"]  # Triggers on main branch
+    branches: [main]
   workflow_dispatch:
 
 permissions:
-  contents: write  # Need write permission to push to gh-pages
+  contents: write # for committing to gh-pages branch.
+  pages: write
+  id-token: write
+
+# Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
+# However, do NOT cancel in-progress runs as we want to allow these production deployments to complete.
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
 
 jobs:
-  build-and-deploy:
+  Github-Pages-Release:
+
+    timeout-minutes: 10
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4 # repo checkout
 
-      - name: Setup Rust
-        uses: dtolnay/rust-toolchain@stable
+      # Install Rust Nightly Toolchain, with Clippy & Rustfmt
+      - name: Install nightly Rust
+        uses: dtolnay/rust-toolchain@nightly
         with:
-          targets: wasm32-unknown-unknown
+          components: clippy, rustfmt
 
-      - name: Setup Rust Cache
-        uses: Swatinem/rust-cache@v2
+      - name: Add WASM target
+        run: rustup target add wasm32-unknown-unknown
 
-      - name: Install Dioxus CLI
-        run: cargo install dioxus-cli
+      - name: lint
+        run: cargo clippy & cargo fmt
 
-      - name: Build Dioxus Project
-        run: dx build --platform web --release --features web
+      - name: Download and install Trunk binary
+        run: wget -qO- https://github.com/trunk-rs/trunk/releases/download/v0.18.4/trunk-x86_64-unknown-linux-gnu.tar.gz | tar -xzf-
 
-      - name: Prepare Distribution
-        run: |
-          # Find the actual build output
-          BUILD_OUTPUT=$(find ./target/dx -type d -name "public" | head -n 1)
-          
-          if [ -z "$BUILD_OUTPUT" ]; then
-            echo "Error: Could not find build output directory"
-            echo "Searching in ./target/dx:"
-            find ./target/dx -type d
-            exit 1
-          fi
+      - name: Build with Trunk
+        # "${GITHUB_REPOSITORY#*/}" evaluates into the name of the repository
+        # using --public-url something will allow trunk to modify all the href paths like from favicon.ico to repo_name/favicon.ico .
+        # this is necessary for github pages where the site is deployed to username.github.io/repo_name and all files must be requested
+        # relatively as favicon.ico. if we skip public-url option, the href paths will instead request username.github.io/favicon.ico which
+        # will obviously return error 404 not found.
+        run: ./trunk build --release --public-url "${GITHUB_REPOSITORY#*/}"
 
-          echo "Found build output at: $BUILD_OUTPUT"
+      # Copy index.html to 404.html for SPA routing
+      # Will allow routing to work if client enters from any route
+      - name: Copy index.html to 404.html
+        run: cp dist/index.html dist/404.html
 
-          # Find the hashed name of the icon:
-          favicon=`ls ./target/dx/protein-comparison-tool/release/web/public/assets/favicon-*.ico | head -n 1 | xargs -- basename`
-          # Create a redirection to send `/favicon.ico` to the web path of the hashed icon:
-          cat > ./target/dx/protein-comparison-tool/release/web/public/_redirects <<EOF
-          /favicon.ico /assets/${favicon}
-          EOF
-
-          cat > ./target/dx/protein-comparison-tool/release/web/public/_headers <<EOF
-          /assets/*
-              Cache-Control: public, max-age=15552000, immutable
-          EOF
-          
-          
-          # Create dist directory and copy files
-          mkdir -p ./dist
-          cp -r $BUILD_OUTPUT/* ./dist/
-
-          # Fix the /./  paths bug in Dioxus 0.7.1
-          sed -i 's|href="/\./|href="/|g' ./dist/index.html
-          sed -i 's|src="/\./|src="/|g' ./dist/index.html
-          
-          # Create 404.html for SPA support
-          cp ./dist/index.html ./dist/404.html
-          
-          echo "Distribution prepared:"
-          ls -la ./dist
-
-
-
-      - name: Deploy to gh-pages branch
+      Deploy to gh-pages branch
+      - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          branch: gh-pages
           folder: dist
-          clean: true
+
+
+      # Deploy with Github Static Pages
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+        with:
+          enablement: true
+          # token:
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v2
+        with:
+          # Upload dist dir
+          path: './dist'
+
+      - name: Deploy to GitHub Pages 🚀
+        id: deployment
+        uses: actions/deploy-pages@v3

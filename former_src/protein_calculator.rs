@@ -264,7 +264,7 @@ pub fn ProteinCalculator() -> Element {
                         },
                     }
                 }
-            
+
             }
         }
     }
