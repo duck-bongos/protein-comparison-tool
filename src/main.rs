@@ -43,16 +43,51 @@ fn Protein() -> impl IntoView {
             "Invalid Values ⚠️".to_string()
         }
     });
-    let sorted_grocery: Memo<Vec<GroceryItem>> = Memo::new(move |_| {
+    let sorted_leanness = Memo::new(move |_| {
         let mut _grocery: Vec<GroceryItem> = grocery_items.get();
-        if leanness.get() {
-            _grocery.sort_by(|a, b| a.leanness.cmp(&b.leanness))
-        } else if protein_per_dollar.get() {
-            _grocery.sort_by(|a, b| a.ppd.cmp(&b.ppd))
-        }
-        _grocery
+        _grocery.sort_by(|a, b| a.leanness.cmp(&b.leanness));
+        let _sorted: Vec<String> = _grocery
+            .into_iter()
+            .map(|item| format!("{}: {} kCal / {}g", item.name, item.calories, item.protein))
+            .collect();
+        _sorted
     });
 
+    let sorted_protein_per_dollar = Memo::new(move |_| {
+        let mut _grocery: Vec<GroceryItem> = grocery_items.get();
+        _grocery.sort_by(|a, b| a.ppd.cmp(&b.ppd));
+        let _sorted: Vec<String> = _grocery
+            .into_iter()
+            .map(|item| {
+                format!(
+                    "{}: {}g per $1",
+                    item.name,
+                    (item.ppd * 100.0).round() / 100.0
+                )
+            })
+            .collect();
+        _sorted
+    });
+    let sorted_grocery: Memo<Vec<String>> = Memo::new(move |_| {
+        let mut _grocery: Vec<GroceryItem> = grocery_items.get();
+        let mut _sorted: Vec<String>;
+        if leanness.get() {
+            _sorted = sorted_leanness.get();
+        } else if protein_per_dollar.get() {
+            _sorted = sorted_protein_per_dollar.get();
+        } else {
+            _sorted = _grocery
+                .into_iter()
+                .map(|item| {
+                    format!(
+                        "{}: {}(g) {}(kCal) {} servings",
+                        item.name, item.protein, item.calories, item.servings
+                    )
+                })
+                .collect();
+        }
+        _sorted
+    });
     view! {
         <div class="main-container">
                 <div class="flex-container">
@@ -161,8 +196,8 @@ fn Protein() -> impl IntoView {
                         <ul class="display-grocery-items">
                                 <For
                                     each=move || sorted_grocery.get()
-                                    key=|item| item.name.clone()
-                                    children=move |item: GroceryItem| {
+                                    key=|item| item.clone()
+                                    children=move |item: String| {
                                         view! { <li>{format!("{}", item)}</li> }
                                     }
                                 />
