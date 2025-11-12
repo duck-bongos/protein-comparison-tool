@@ -204,7 +204,7 @@ fn Protein() -> impl IntoView {
                         </ul>
                         <div class="input-form-buttons">
                             <h3 style="font-style: italic">"Sort By"</h3>
-                            <input type="button" id="sort-leanness" class="form-button" on:click=move |_| {set_leanness.set(true); set_protein_per_dollar.set(true);} value="Lean-ness"/>
+                            <input type="button" id="sort-leanness" class="form-button" on:click=move |_| {set_leanness.set(true); set_protein_per_dollar.set(true);} value="Leanness"/>
                             <input type="button" id="sort-protein-per-dollar" class="form-button" on:click=move |_| {set_leanness.set(false); set_protein_per_dollar.set(true);}value="Protein Per Dollar"/>
                             <input type="button" class="form-button clear-button" on:click=move |_| {set_grocery_items.write().clear()} value="Clear Items"/>
                         </div>
