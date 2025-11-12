@@ -58,7 +58,7 @@ jobs:
       - name: Copy index.html to 404.html
         run: cp dist/index.html dist/404.html
 
-      Deploy to gh-pages branch
+      # Deploy to gh-pages branch
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4
         with:
