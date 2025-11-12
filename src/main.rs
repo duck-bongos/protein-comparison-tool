@@ -29,6 +29,8 @@ fn Protein() -> impl IntoView {
     let (cost, set_cost) = signal(0.0);
     let (servings, set_servings) = signal(1.0);
     let (grocery_items, set_grocery_items) = signal(vec![]);
+    let (leanness, set_leanness) = signal(false);
+    let (protein_per_dollar, set_protein_per_dollar) = signal(false);
     let ready = Memo::new(move |_| {
         if name.read().to_string().len() >= 2
             && protein.get() > 0.0
@@ -38,9 +40,19 @@ fn Protein() -> impl IntoView {
         {
             "Ready to Add \u{2705}".to_string()
         } else {
-            "Invalid Values \u{274C}".to_string()
+            "Invalid Values ⚠️".to_string()
         }
     });
+    let sorted_grocery: Memo<Vec<GroceryItem>> = Memo::new(move |_| {
+        let mut _grocery: Vec<GroceryItem> = grocery_items.get();
+        if leanness.get() {
+            _grocery.sort_by(|a, b| a.leanness.cmp(&b.leanness))
+        } else if protein_per_dollar.get() {
+            _grocery.sort_by(|a, b| a.ppd.cmp(&b.ppd))
+        }
+        _grocery
+    });
+
     view! {
         <div class="main-container">
                 <div class="flex-container">
@@ -49,7 +61,6 @@ fn Protein() -> impl IntoView {
                     <p style="font-style: italic; display: block">"Compare different sources of protein - animals, plant, and supplements - by leanness or cost. You can compare online deals to in-store prices."</p>
 
                     <div class="div-form">
-                        // <p class="input-status">{ready}" "{name}": "{calories}" "{protein}" "{cost}" "{servings}</p>
                         <p class="input-status">{ready}</p>
                         <label for="name">"Item Label "
                             <div class="tooltip">" \u{24D8}"
@@ -57,14 +68,11 @@ fn Protein() -> impl IntoView {
                             </div>
                         </label>
                         <input class="" type="text" placeholder="(Chicken)" name="name" id="name"
-                            // adding :target gives us typed access to the element
-                            // that is the target of the event that fires
+
                             on:input:target=move |ev| {
-                                // .value() returns the current value of an HTML input element
                                 set_name.set(ev.target().value());
                             }
-                            // the `prop:` syntax lets you update a DOM property,
-                            // rather than an attribute.
+
                             prop:value=name
                         />
 
@@ -108,8 +116,9 @@ fn Protein() -> impl IntoView {
 
                         <div class="input-form-buttons">
                             <button
+
                                 on:click=move |_| {
-                                    if ready.get() == "Invalid Values \u{274C}".to_string() {
+                                    if ready.get() == "Invalid Values ⚠️".to_string() {
                                         println!("Not OK!");
                                     }
                                     else {
@@ -136,6 +145,7 @@ fn Protein() -> impl IntoView {
 
                             </button>
                             <button
+
                                 on:click=move |_| {
                                     set_name.set("".to_string());
                                     set_protein.set(0.0);
@@ -150,7 +160,7 @@ fn Protein() -> impl IntoView {
 
                         <ul class="display-grocery-items">
                                 <For
-                                    each=move || grocery_items.get()
+                                    each=move || sorted_grocery.get()
                                     key=|item| item.name.clone()
                                     children=move |item: GroceryItem| {
                                         view! { <li>{format!("{}", item)}</li> }
@@ -159,8 +169,8 @@ fn Protein() -> impl IntoView {
                         </ul>
                         <div class="input-form-buttons">
                             <h3 style="font-style: italic">"Sort By"</h3>
-                            <input type="button" class="form-button" on:click=move |_| {set_grocery_items.write().sort_by(|a, b| a.leanness.cmp(&b.leanness));} value="Lean-ness"/>
-                            <input type="button" class="form-button" on:click=move |_| {set_grocery_items.write().sort_by(|a, b| a.ppd.cmp(&b.ppd));}value="Protein Per Dollar"/>
+                            <input type="button" id="sort-leanness" class="form-button" on:click=move |_| {set_leanness.set(true); set_protein_per_dollar.set(true);} value="Lean-ness"/>
+                            <input type="button" id="sort-protein-per-dollar" class="form-button" on:click=move |_| {set_leanness.set(false); set_protein_per_dollar.set(true);}value="Protein Per Dollar"/>
                             <input type="button" class="form-button clear-button" on:click=move |_| {set_grocery_items.write().clear()} value="Clear Items"/>
                         </div>
                     </div>

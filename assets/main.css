@@ -80,6 +80,11 @@ button {
   margin: 2px;
 }
 
+input#sort-leanness:focus, input#sort-protein-per-dollar:focus {
+  background-color: var(--accent);
+  color: var(--text-base);
+}
+
 #name #protein #calories #cost #servings {
   font-size: 24px;
 }
