@@ -217,7 +217,7 @@ fn Protein() -> impl IntoView {
 fn App() -> impl IntoView {
     view! {
         <Navbar/>
-        <Router base="/protein-comparison-tool">
+        <Router base="/">
             <Routes fallback=|| "Not Found">
             <Route path=path!("") view=Protein/>
             <Route path=path!("cat") view=|| view! {<h1>"CAT"</h1>}/>
