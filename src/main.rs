@@ -222,7 +222,6 @@ fn App() -> impl IntoView {
             <Route path=path!("") view=Protein/>
             <Route path=path!("cat") view=|| view! {<h1>"CAT"</h1>}/>
             <Route path=path!("dog") view=|| view! {<h1>"DOG"</h1>}/>
-            <Route path=path!("bird") view=|| view! {<h1>"BIRD"</h1>}/>
             <Route path=path!("*any") view=|| "Not Found"/>
             </Routes>
         </Router>
