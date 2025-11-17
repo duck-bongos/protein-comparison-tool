@@ -7,7 +7,6 @@ use protein_comparison_tool::eng::{GroceryItem, UxItem};
 #[component]
 fn Navbar() -> impl IntoView {
     view! {
-
         <div class="navbar-container">
             <div class="navbar">
                 <ul class="navbar">
@@ -217,10 +216,14 @@ fn Protein() -> impl IntoView {
 #[component]
 fn App() -> impl IntoView {
     view! {
-        <Router base="/protein-comparison-tool">
-            <Navbar/>
-            <Routes fallback=|| view! {<h1>"WHOOPS! We Couldn't Find That Page"</h1><h3>(404 not found)</h3>}>
-                <Route path=path!("/") view=Protein/>
+        <Navbar/>
+        <Router>
+            <Routes fallback=|| "Not Found">
+            <Route path=path!("/") view=Protein/>
+            <Route path=path!("/protein-comparison-tool") view=Protein/>
+            <Route path=path!("/cat") view=|| view! {<h1>"CAT"</h1>}/>
+            <Route path=path!("/dog") view=|| view! {<h1>"DOG"</h1>}/>
+            <Route path=path!("/*any") view=|| "Not Found"/>
             </Routes>
         </Router>
     }
