@@ -1,80 +1,80 @@
-name: Deploy Dioxus to Cloudflare Pages
+# name: Deploy Dioxus to Cloudflare Pages
 
-on:
-  push:
-    branches: ["main"]  # Triggers on main branch
-  workflow_dispatch:
+# on:
+#   push:
+#     branches: ["main"]  # Triggers on main branch
+#   workflow_dispatch:
 
-permissions:
-  contents: write  # Need write permission to push to gh-pages
+# permissions:
+#   contents: write  # Need write permission to push to gh-pages
 
-jobs:
-  build-and-deploy:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+# jobs:
+#   build-and-deploy:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Checkout
+#         uses: actions/checkout@v4
 
-      - name: Setup Rust
-        uses: dtolnay/rust-toolchain@stable
-        with:
-          targets: wasm32-unknown-unknown
+#       - name: Setup Rust
+#         uses: dtolnay/rust-toolchain@stable
+#         with:
+#           targets: wasm32-unknown-unknown
 
-      - name: Setup Rust Cache
-        uses: Swatinem/rust-cache@v2
+#       - name: Setup Rust Cache
+#         uses: Swatinem/rust-cache@v2
 
-      - name: Install Dioxus CLI
-        run: cargo install dioxus-cli
+#       - name: Install Dioxus CLI
+#         run: cargo install dioxus-cli
 
-      - name: Build Dioxus Project
-        run: dx build --platform web --release --features web
+#       - name: Build Dioxus Project
+#         run: dx build --platform web --release --features web
 
-      - name: Prepare Distribution
-        run: |
-          # Find the actual build output
-          BUILD_OUTPUT=$(find ./target/dx -type d -name "public" | head -n 1)
+#       - name: Prepare Distribution
+#         run: |
+#           # Find the actual build output
+#           BUILD_OUTPUT=$(find ./target/dx -type d -name "public" | head -n 1)
           
-          if [ -z "$BUILD_OUTPUT" ]; then
-            echo "Error: Could not find build output directory"
-            echo "Searching in ./target/dx:"
-            find ./target/dx -type d
-            exit 1
-          fi
+#           if [ -z "$BUILD_OUTPUT" ]; then
+#             echo "Error: Could not find build output directory"
+#             echo "Searching in ./target/dx:"
+#             find ./target/dx -type d
+#             exit 1
+#           fi
 
-          echo "Found build output at: $BUILD_OUTPUT"
+#           echo "Found build output at: $BUILD_OUTPUT"
 
-          # Find the hashed name of the icon:
-          favicon=`ls ./target/dx/protein-comparison-tool/release/web/public/assets/favicon-*.ico | head -n 1 | xargs -- basename`
-          # Create a redirection to send `/favicon.ico` to the web path of the hashed icon:
-          cat > ./target/dx/protein-comparison-tool/release/web/public/_redirects <<EOF
-          /favicon.ico /assets/${favicon}
-          EOF
+#           # Find the hashed name of the icon:
+#           favicon=`ls ./target/dx/protein-comparison-tool/release/web/public/assets/favicon-*.ico | head -n 1 | xargs -- basename`
+#           # Create a redirection to send `/favicon.ico` to the web path of the hashed icon:
+#           cat > ./target/dx/protein-comparison-tool/release/web/public/_redirects <<EOF
+#           /favicon.ico /assets/${favicon}
+#           EOF
 
-          cat > ./target/dx/protein-comparison-tool/release/web/public/_headers <<EOF
-          /assets/*
-              Cache-Control: public, max-age=15552000, immutable
-          EOF
+#           cat > ./target/dx/protein-comparison-tool/release/web/public/_headers <<EOF
+#           /assets/*
+#               Cache-Control: public, max-age=15552000, immutable
+#           EOF
           
           
-          # Create dist directory and copy files
-          mkdir -p ./dist
-          cp -r $BUILD_OUTPUT/* ./dist/
+#           # Create dist directory and copy files
+#           mkdir -p ./dist
+#           cp -r $BUILD_OUTPUT/* ./dist/
 
-          # Fix the /./  paths bug in Dioxus 0.7.1
-          sed -i 's|href="/\./|href="/|g' ./dist/index.html
-          sed -i 's|src="/\./|src="/|g' ./dist/index.html
+#           # Fix the /./  paths bug in Dioxus 0.7.1
+#           sed -i 's|href="/\./|href="/|g' ./dist/index.html
+#           sed -i 's|src="/\./|src="/|g' ./dist/index.html
           
-          # Create 404.html for SPA support
-          cp ./dist/index.html ./dist/404.html
+#           # Create 404.html for SPA support
+#           cp ./dist/index.html ./dist/404.html
           
-          echo "Distribution prepared:"
-          ls -la ./dist
+#           echo "Distribution prepared:"
+#           ls -la ./dist
 
 
 
-      - name: Deploy to gh-pages branch
-        uses: JamesIves/github-pages-deploy-action@v4
-        with:
-          branch: gh-pages
-          folder: dist
-          clean: true
+#       - name: Deploy to gh-pages branch
+#         uses: JamesIves/github-pages-deploy-action@v4
+#         with:
+#           branch: gh-pages
+#           folder: dist
+#           clean: true
