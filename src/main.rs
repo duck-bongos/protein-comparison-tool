@@ -10,9 +10,9 @@ fn Navbar() -> impl IntoView {
         <div class="navbar-container">
             <div class="navbar">
                 <ul class="navbar">
-                    <li><a href="https://dan-codes-badly.com/">Home</a></li>
-                    <li><a href="https://dan-codes-badly.com/career">Career</a></li>
-                    <li><a href="https://dan-codes-badly.com/projects">Projects</a></li>
+                    <li><a href="https://duck-bongos.github.io/">Home</a></li>
+                    <li><a href="https://duck-bongos.github.io/career">Career</a></li>
+                    <li><a href="https://duck-bongos.github.io/projects">Projects</a></li>
                     <li><a href="/protein-comparison-tool">Compare Protein</a></li>
                 </ul>
             </div>
@@ -223,7 +223,6 @@ fn App() -> impl IntoView {
             <Route path=path!("/protein-comparison-tool") view=Protein/>
             <Route path=path!("/cat") view=|| view! {<h1>"CAT"</h1>}/>
             <Route path=path!("/dog") view=|| view! {<h1>"DOG"</h1>}/>
-            // <Route path=path!("/*any") view=|| "Not Found"/>
             </Routes>
         </Router>
     }
