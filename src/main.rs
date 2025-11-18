@@ -219,11 +219,11 @@ fn App() -> impl IntoView {
         <Navbar/>
         <Router>
             <Routes fallback=|| "Not Found">
-            <Route path=path!("/") view=Protein/>
+            // <Route path=path!("/") view=Protein/>
             <Route path=path!("/protein-comparison-tool") view=Protein/>
             <Route path=path!("/cat") view=|| view! {<h1>"CAT"</h1>}/>
             <Route path=path!("/dog") view=|| view! {<h1>"DOG"</h1>}/>
-            <Route path=path!("/*any") view=|| "Not Found"/>
+            // <Route path=path!("/*any") view=|| "Not Found"/>
             </Routes>
         </Router>
     }
